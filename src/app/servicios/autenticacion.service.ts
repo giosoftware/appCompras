@@ -19,7 +19,7 @@ export class AutenticacionService {
         this.router.navigate(['/inicio']);
       }).catch(
         error => { console.log(error); }
-      )
+      );
   }
 
   isAuthenticated() {
@@ -35,10 +35,7 @@ export class AutenticacionService {
     firebase.auth().signOut();
   }
 
-  registroUsuario(userdata) {
-    firebase.auth().createUserWithEmailAndPassword(userdata.email, userdata.password)
-      .catch(error => {
-        console.log(error);
-      })
+  registroUsuario(userdata): Promise<firebase.auth.UserCredential> {
+    return firebase.auth().createUserWithEmailAndPassword(userdata.email, userdata.password);
   }
 }
