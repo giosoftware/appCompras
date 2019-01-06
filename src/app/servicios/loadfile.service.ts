@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { Archivo } from '../upload/file.model';
 
@@ -9,18 +9,16 @@ import { Archivo } from '../upload/file.model';
 
 export class LoadfileService {
 
-  private basePath: string = '/uploads';
-  uploads$: AngularFireList<Archivo[]>;
-
+  private basePath = '/uploads';
   constructor(public angularFireDatabase: AngularFireDatabase) { }
 
   deleteUpload(upload: Archivo) {
     console.log('deleteUpload');
     console.log(upload);
     this.deleteFileData(upload.key).then(() => {
-      this.deleteFileStorage(upload.name)
+      this.deleteFileStorage(upload.name);
     })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error));
   }
   private deleteFileData(key: string) {
     console.log('deleteFileData with key: ' + key);
@@ -28,16 +26,12 @@ export class LoadfileService {
   }
 
   private deleteFileStorage(name: string) {
-    const storageRef = firebase.storage().ref(); 
-    storageRef.child(`${this.basePath}/${name}`).delete()
+    const storageRef = firebase.storage().ref();
+    storageRef.child(`${this.basePath}/${name}`).delete();
   }
 
   getUploads() {
-    console.log('getUploads');
-    // this.angularFireDatabase.list(this.basePath).valueChanges().subscribe(data => console.log(data));
-    this.uploads$ = this.angularFireDatabase.list(this.basePath);
-    
-    return this.uploads$;
+    return this.angularFireDatabase.list(this.basePath);
   }
 
   pushUpload(upload: Archivo) {
@@ -49,7 +43,7 @@ export class LoadfileService {
       upload.progress = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100;
     },
       (error) => {
-        // upload failed 
+        // upload failed
         console.log(error);
       },
       () => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireList } from 'angularfire2/database'; 
-import { LoadfileService } from '../servicios/loadfile.service'; 
+import { Observable } from 'rxjs';
+import { LoadfileService } from '../servicios/loadfile.service';
 import { Archivo } from '../upload/file.model';
 
 @Component({
@@ -10,15 +10,13 @@ import { Archivo } from '../upload/file.model';
 })
 export class ContratosComponent implements OnInit {
 
-  uploads: AngularFireList<Archivo[]>;
+  uploads: Observable<any[]>;
   archivos: Archivo[];
 
   constructor(private loadfileService: LoadfileService) {}
 
   ngOnInit() {
-    this.uploads = this.loadfileService.getUploads();
-    //this.loadfileService.getUploads().valueChanges().subscribe(data => this.uploads);
-    
+    this.uploads = this.loadfileService.getUploads().valueChanges();
   }
 
 }
