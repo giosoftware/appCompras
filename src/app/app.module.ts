@@ -26,7 +26,7 @@ import { EditfrasComponent } from './facturas/editfras/editfras.component';
 import { EditproveeComponent } from './proveedores/editprovee/editprovee.component';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database'; 
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from './config/firebase.config';
@@ -77,7 +77,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     FacturasModule,
-    AngularFireModule.initializeApp(environment.firebase), 
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireStorageModule
@@ -85,5 +85,4 @@ const routes: Routes = [
   providers: [ProveedoresService, PresupuestosService, AutenticacionService, GuardService, LoadfileService],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-}
+export class AppModule {}
