@@ -16,7 +16,7 @@ export class ContratosComponent implements OnInit {
   constructor(private loadfileService: LoadfileService) {}
 
   ngOnInit() {
-    this.uploads = this.loadfileService.getUploads().valueChanges();
+    this.uploads = this.loadfileService.getUploads();
   }
 
 }

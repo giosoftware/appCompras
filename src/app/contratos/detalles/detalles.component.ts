@@ -12,12 +12,11 @@ export class DetallesComponent implements OnInit {
   @Input() upload: Archivo;
 
   constructor(private loadfileService: LoadfileService) { }
-  
+
   deleteUpload(upload) {
     this.loadfileService.deleteUpload(this.upload);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

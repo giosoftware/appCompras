@@ -1,7 +1,18 @@
 <div class="card" style="width: 20rem;">
   <div class="card-block">
     <h4 class="card-title">Contrato</h4>
-    <p class="card-text">{{ upload.key }} - {{ upload.name }}</p> <a href="{{upload.url}}" class="btn btn-primary float-md-left">Visualizar</a>
-    <button class="btn btn-danger float-md-right" (click)='deleteUpload(upload)'>Eliminar</button>
+    <p class="card-text">{{ upload.name }}</p>
+    <a
+      href="{{ upload.url }}"
+      target="_blank"
+      class="btn btn-primary float-md-left"
+      >Visualizar</a
+    >
+    <button
+      class="btn btn-danger float-md-right"
+      (click)="deleteUpload(upload)"
+    >
+      Eliminar
+    </button>
   </div>
 </div>
